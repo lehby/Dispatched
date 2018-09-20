@@ -1,0 +1,28 @@
+page{
+  background-color: #f5f5f5;
+}
+.navbar{
+  flex: none;
+  display: flex;
+  background: #fff;
+}
+.navbar .item{
+  position: relative;
+  flex: auto;
+  text-align: center;
+  line-height: 24rpx;
+}
+.navbar .item.active{
+  color: #2269d4;
+  height: 80rpx;
+}
+.navbar .item.active:after{
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: #2269d4;
+}

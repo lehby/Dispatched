@@ -1,0 +1,216 @@
+<!-- 导航条 -->
+<view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+        {{item}}
+    </text>
+</view>
+<!-- 全部订单 -->
+<view hidden="{{currentTab!==0}}">
+    <!-- 新单 -->
+    <view class="NewSingle" wx:for="{{NewSingle}}" wx:for-item="item" wx:key="NewSingle" bindtap="onDetails">
+        <view class="NewSingle_top">
+            <view>用气编号: {{item.CustomeId}}</view>
+            <view style="color: #2269d4;">{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view>配送地址: {{item.Address}}</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #2269d4;" catchtap="allot">分单</view>
+        </view>
+    </view>
+    <!-- 添加分组弹框 -->
+    <view class="modal-mask" bindtap="allotModal" catchtouchmove="preventTouchMove" wx:if="{{allotModal}}"></view>
+    <view class="modal-dialog" wx:if="{{allotModal}}" style=" top:20%;">
+        <view class="modal-title"></view>
+        <view class="btn-Photograph">添加到分组</view>
+        <!-- 没有数据显示页面 -->
+        <view class="nothingDate" hidden="{{Grouping!==1}}">
+            <image src="../../imgs/1536893605.jpg" />
+            <view class="modal-text">您还未添加分组</view>
+            <view class="btn_establish" bindtap="onCreate">创建组</view>
+            <view class="modal-footer">
+                <view class="btn-cancel" bindtap="allotCancel">取消</view>
+                <view class="btn-confirm" bindtap="allotConfirm">确定</view>
+            </view>
+        </view>
+        <!-- 有数据显示页面 -->
+        <view class="Date" hidden="{{Grouping!==2}}">
+            <view class="Grouping" wx:for="{{CreateGroup}}" wx:for-item="item" wx:key="CreateGroup">
+                <view class="Grouping_left">
+                    <view class="top">{{item.GroupOrder}}</view>
+                    <view class="top">{{item.GroupName}}</view>
+                </view>
+                <view class="Grouping_right">
+                    <image class="top" src="../../imgs/add.png" />
+                    <view>添加</view>
+                </view>
+            </view>
+            <view class="btn_establish" bindtap="onCreate">创建组</view>
+        </view>
+        <!-- 创建组显示页面 -->
+        <view class="Create" hidden="{{Grouping!==3}}">
+            <input placeholder="请输入组名称(3到10个字)" value="{{GroupName}}" type="text" maxlength="10" bindblur="voteTitle" />
+            <view>创建后将自动保存在此组内</view>
+            <view class="btn_establish" bindtap="onPreservation">保存</view>
+            <view class="modal-footer">
+                <view class="btn-cancel" bindtap="allotCancel">取消</view>
+                <view class="btn-confirm" bindtap="allotConfirm">确定</view>
+            </view>
+        </view>
+    </view>
+    <!-- 分单 -->
+    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" bindtap="onDivision">
+        <view class="NewSingle_top">
+            <view>组名称</view>
+            <view style="color: #EFA604;">已{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle" wx:for="{{item.singlelist}}" wx:for-item="in" wx:key="singlelist">
+            <view>用气编号: {{in.CustomeId}}</view>
+            <view>预约时间: {{in.date}} {{in.time}}</view>
+            <view>配送地址: {{in.Address}}</view>
+            <view class="remove">移除分组</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #EFA604;">派单</view>
+        </view>
+    </view>
+    <!-- 分单弹框 -->
+    <view class="modal-mask" bindtap="DivisionModal" catchtouchmove="preventTouchMove" wx:if="{{DivisionModal}}"></view>
+    <view class="modal-dialog" wx:if="{{DivisionModal}}" style=" top:20%;">
+        <view class="modal-title"></view>
+        <view class="btn-Photograph">配送工</view>
+        <radio-group class="group" bindchange="PaymentChange">
+            <view class="label-2" wx:for="{{PaymentItems}}" wx:key="PaymentItems">
+                <label class="label-2-text" for="{{item.name}}">
+                    <text>{{item.name}}</text>
+                </label>
+                <label class="label-2-text" for="{{item.vehicle}}">
+                    <text>{{item.vehicle}}</text>
+                </label>
+                <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+            </view>
+        </radio-group>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="DivisionCancel">取消</view>
+            <view class="btn-confirm" bindtap="DivisionConfirm">确定</view>
+        </view>
+    </view>
+    <!-- 已派单 -->
+    <view class="NewSingle" wx:for="{{Distribution}}" wx:for-item="item" wx:key="Distribution" bindtap="Details">
+        <view class="NewSingle_top">
+            <view>用气编号: {{item.CustomeId}}</view>
+            <view style="color: #0EBC6C;">已{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view>配送地址: {{item.Address}}</view>
+        </view>
+    </view>
+</view>
+<!-- 新单 -->
+<view hidden="{{currentTab!==1}}">
+    <view class="NewSingle" wx:for="{{NewSingle}}" wx:for-item="item" wx:key="NewSingle" bindtap="onDetails">
+        <view class="NewSingle_top">
+            <view>用气编号: {{item.CustomeId}}</view>
+            <view style="color: #2269d4;">{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view>配送地址: {{item.Address}}</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #2269d4;" catchtap="allot">分单</view>
+        </view>
+    </view>
+    <!-- 添加分组弹框 -->
+    <view class="modal-mask" bindtap="allotModal" catchtouchmove="preventTouchMove" wx:if="{{allotModal}}"></view>
+    <view class="modal-dialog" wx:if="{{allotModal}}" style=" top:20%;">
+        <view class="modal-title"></view>
+        <view class="btn-Photograph">添加到分组</view>
+        <!-- 没有数据显示页面 -->
+        <view class="nothingDate" hidden="{{Grouping!==1}}">
+            <image src="../../imgs/1536893605.jpg" />
+            <view class="modal-text">您还未添加分组</view>
+            <view class="btn_establish" bindtap="onCreate">创建组</view>
+        </view>
+        <!-- 有数据显示页面 -->
+        <view class="Date" hidden="{{Grouping!==2}}">
+            <view class="Grouping" wx:for="{{CreateGroup}}" wx:for-item="item" wx:key="CreateGroup">
+                <view class="Grouping_left">
+                    <view class="top">{{item.GroupOrder}}</view>
+                    <view class="top">{{item.GroupName}}</view>
+                </view>
+                <view class="Grouping_right">
+                    <image class="top" src="../../imgs/add.png" />
+                    <view>添加</view>
+                </view>
+            </view>
+            <view class="btn_establish" bindtap="onCreate">创建组</view>
+        </view>
+        <!-- 创建组显示页面 -->
+        <view class="Create" hidden="{{Grouping!==3}}">
+            <input placeholder="请输入组名称(3到10个字)" value="{{GroupName}}" type="text" maxlength="10" bindblur="voteTitle" />
+            <view>创建后将自动保存在此组内</view>
+            <view class="btn_establish" bindtap="onPreservation">保存</view>
+        </view>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="allotCancel">取消</view>
+            <view class="btn-confirm" bindtap="allotConfirm">确定</view>
+        </view>
+    </view>
+</view>
+<!-- 分单 -->
+<view hidden="{{currentTab!==2}}">
+    <!-- 分单 -->
+    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" bindtap="onDivision">
+        <view class="NewSingle_top">
+            <view>组名称</view>
+            <view style="color: #EFA604;">已{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle" wx:for="{{item.singlelist}}" wx:for-item="in" wx:key="singlelist">
+            <view>用气编号: {{in.CustomeId}}</view>
+            <view>预约时间: {{in.date}} {{in.time}}</view>
+            <view>配送地址: {{in.Address}}</view>
+            <view class="remove">移除分组</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #EFA604;">派单</view>
+        </view>
+    </view>
+    <!-- 分单弹框 -->
+    <view class="modal-mask" bindtap="DivisionModal" catchtouchmove="preventTouchMove" wx:if="{{DivisionModal}}"></view>
+    <view class="modal-dialog" wx:if="{{DivisionModal}}" style=" top:20%;">
+        <view class="modal-title"></view>
+        <view class="btn-Photograph">配送工</view>
+        <radio-group class="group" bindchange="PaymentChange">
+            <view class="label-2" wx:for="{{PaymentItems}}" wx:key="PaymentItems">
+                <label class="label-2-text" for="{{item.name}}">
+                    <text>{{item.name}}</text>
+                </label>
+                <label class="label-2-text" for="{{item.vehicle}}">
+                    <text>{{item.vehicle}}</text>
+                </label>
+                <radio id="{{item.name}}" value="{{item.name}}" checked="{{item.checked}}"></radio>
+            </view>
+        </radio-group>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="DivisionCancel">取消</view>
+            <view class="btn-confirm" bindtap="DivisionConfirm">确定</view>
+        </view>
+    </view>
+</view>
+<!-- 已派单 -->
+<view hidden="{{currentTab!==3}}">
+    <view class="NewSingle" wx:for="{{Distribution}}" wx:for-item="item" wx:key="Distribution">
+        <view class="NewSingle_top">
+            <view>用气编号: {{item.CustomeId}}</view>
+            <view style="color: #0EBC6C;">已{{item.OrderType}}</view>
+        </view>
+        <view class="NewSingle_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view>配送地址: {{item.Address}}</view>
+        </view>
+    </view>
+</view>

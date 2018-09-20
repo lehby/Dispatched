@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/RepairOrder/RepairOrder",
+    "pages/RepairDetails/RepairDetails",
+    "pages/OrderList/OrderList",
+    "pages/Details/Details",
+    "pages/Distribution/Distribution",
+    "pages/Statistics/Statistics"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2269d4",
+    "navigationBarTitleText": "派单员",
+    "navigationBarTextStyle": "#fff"
+  },
+  "tabBar": {
+    "color": "black",
+    "selectedColor": "#2269d4",
+    "list": [
+      {
+        "pagePath": "pages/OrderList/OrderList",
+        "text": "订气订单",
+        "iconPath": "/imgs/gas.png",
+        "selectedIconPath": "/imgs/gas1.png"
+      },
+      {
+        "pagePath": "pages/RepairOrder/RepairOrder",
+        "text": "维修订单",
+        "iconPath": "/imgs/R.png",
+        "selectedIconPath": "/imgs/R1.png"
+      },
+      {
+        "pagePath": "pages/Distribution/Distribution",
+        "text": "配送工",
+        "iconPath": "/imgs/Distribution.png",
+        "selectedIconPath": "/imgs/Distribution1.png"
+      },
+      {
+        "pagePath": "pages/Statistics/Statistics",
+        "text": "统计表单",
+        "iconPath": "/imgs/Statistics.png",
+        "selectedIconPath": "/imgs/Statistics1.png"
+      }
+    ]
+  }
+}

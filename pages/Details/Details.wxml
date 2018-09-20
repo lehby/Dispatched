@@ -1,0 +1,70 @@
+<view class="header">
+    <view>接到新订单</view>
+    <view style="margin-top: 20rpx;">请进行分单</view>
+    <image src="../../imgs/1536823519.png" />
+</view>
+<view class="Order">
+    <view class="Order_status_middle">
+        <view class="middle_left">
+            <view class="img_address">
+                <image src="../../imgs/address.png" />
+            </view>
+        </view>
+        <view class="middle_right">
+            <view class="middle_right_top">
+                <view>张晓宏</view>
+                <view>13686982686</view>
+            </view>
+            <view clase="middle_right_bottom">北京市朝阳区来广营东河西五街房管奥北中心五号楼1单元2504</view>
+        </view>
+    </view>
+    <view class="Order_status_bottom">
+        <view class="bottom_left">
+            <view class="img_clock">
+                <image src="../../imgs/time.png" />
+            </view>
+        </view>
+        <view class="bottom_right">
+            <view>预约时间</view>
+            <view>立即出发</view>
+        </view>
+    </view>
+</view>
+<view class="table">
+    <text >商品订单</text>
+    <view class="th">
+        <view class="th_within">名称</view>
+        <view class="th_within">规格</view>
+        <view class="th_within">单价</view>
+        <view class="th_within">数量</view>
+    </view>
+    <view class="td">
+        <view class="td_witdin">液化气大瓶</view>
+        <view class="td_witdin">48kg</view>
+        <view class="td_witdin">120</view>
+        <view class="td_witdin">3</view>
+    </view>
+    <view class="td">
+        <view class="td_witdin">液化气大瓶</view>
+        <view class="td_witdin">48kg</view>
+        <view class="td_witdin">120</view>
+        <view class="td_witdin">3</view>
+    </view>
+</view>
+<view class="payment" style="margin-top: 24rpx;border-bottom: 2rpx solid #f5f5f5;">
+    <view >支付方式</view>
+    <view >在线支付</view>
+</view>
+<view class="payment">
+    <view >支付状态</view>
+    <view >已付款</view>
+</view>
+<view class="details">
+    <view>用气编号: 4657650676243</view>
+    <view>订单号: DD170721524848366</view>
+    <view>下单时间: 2018-08-23 11:23</view>
+    <view>订单金额: ￥9999</view>
+</view>
+<view class="btnlist">
+    <view class="btn confirm">分单</view>
+</view>

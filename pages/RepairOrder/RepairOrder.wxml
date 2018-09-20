@@ -1,0 +1,63 @@
+<!-- 导航条 -->
+<view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+        {{item}}
+    </text>
+</view>
+<!-- 全部订单 -->
+<view hidden="{{currentTab!==0}}">
+    <!-- 新单 -->
+    <view class="form" wx:for="{{NewSingle}}" wx:for-item="item" wx:key="NewSingle" bindtap="details">
+        <view class="form_top">
+            <view>维修单号: {{item.CustomeId}}</view>
+            <view style="color: #2168D3;">{{item.OrderType}}</view>
+        </view>
+        <view class="form_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #2269d4;">派单</view>
+        </view>
+    </view>
+    <!-- 已派单 -->
+    <view class="form" wx:for="{{Distribution}}" wx:for-item="item" wx:key="Distribution" bindtap="details">
+        <view class="form_top">
+            <view>维修单号: {{item.CustomeId}}</view>
+            <view style="color: #0EBC6C;">已{{item.OrderType}}</view>
+        </view>
+        <view class="form_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
+        </view>
+    </view>
+</view>
+<!-- 新单 -->
+<view hidden="{{currentTab!==1}}">
+    <view class="form" wx:for="{{NewSingle}}" wx:for-item="item" wx:key="NewSingle" bindtap="details">
+        <view class="form_top">
+            <view>维修单号: {{item.CustomeId}}</view>
+            <view style="color: #2168D3;">{{item.OrderType}}</view>
+        </view>
+        <view class="form_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
+        </view>
+        <view class="NewSingle_bottom">
+            <view style="background-color: #2269d4;">派单</view>
+        </view>
+    </view>
+</view>
+<!-- 已派单 -->
+<view hidden="{{currentTab!==2}}">
+    <view class="form" wx:for="{{Distribution}}" wx:for-item="item" wx:key="Distribution" bindtap="details">
+        <view class="form_top">
+            <view>维修单号: {{item.CustomeId}}</view>
+            <view style="color: #0EBC6C;">已{{item.OrderType}}</view>
+        </view>
+        <view class="form_middle">
+            <view>预约时间: {{item.date}} {{item.time}}</view>
+            <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
+        </view>
+    </view>
+</view>

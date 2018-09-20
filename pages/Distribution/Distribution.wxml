@@ -1,0 +1,61 @@
+<view class="map_container">
+    <map class="map" id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="16" show-location="true" markers="{{markers}}" bindmarkertap="makertap" controls="{{controls}}" bindcontroltap="clickcontrol" bindregionchange="mapchange"></map>
+</view>
+<view class="occupy"></view>
+<!-- 导航条 -->
+<view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+        {{item}}
+    </text>
+</view>
+<!-- 全部订单 -->
+<view hidden="{{currentTab!==0}}">
+     <!-- 休息 -->
+    <view class="Distributionlist">
+        <view class="Distributionlist_top">
+            <view>配送工: 郑名朋</view>
+            <view style="margin-top: 34rpx;">联系方式: 18508359868</view>
+        </view>
+        <view class="Distributionlist_bottom">
+            <view>当前地址: 成都市龙泉区某某镇某某街</view>
+            <view class="Distribution_btn" style="background-color: #2168D3;">休息中</view>
+        </view>
+    </view>
+    <!-- 派单 -->
+    <view class="Distributionlist">
+        <view class="Distributionlist_top">
+            <view>配送工: 郑名朋</view>
+            <view style="margin-top: 34rpx;">联系方式: 18508359868</view>
+        </view>
+        <view class="Distributionlist_bottom">
+            <view>当前地址: 成都市龙泉区某某镇某某街</view>
+            <view class="Distribution_btn" style="background-color: #0EBC6C;">已派单</view>
+        </view>
+    </view>
+</view>
+<!-- 派单 -->
+<view hidden="{{currentTab!==1}}">
+    <view class="Distributionlist">
+        <view class="Distributionlist_top">
+            <view>配送工: 郑名朋</view>
+            <view style="margin-top: 34rpx;">联系方式: 18508359868</view>
+        </view>
+        <view class="Distributionlist_bottom">
+            <view>当前地址: 成都市龙泉区某某镇某某街</view>
+            <view class="Distribution_btn" style="background-color: #2168D3;">休息中</view>
+        </view>
+    </view>
+</view>
+<!-- 休息 -->
+<view hidden="{{currentTab!==2}}">
+    <view class="Distributionlist">
+        <view class="Distributionlist_top">
+            <view>配送工: 郑名朋</view>
+            <view style="margin-top: 34rpx;">联系方式: 18508359868</view>
+        </view>
+        <view class="Distributionlist_bottom">
+            <view>当前地址: 成都市龙泉区某某镇某某街</view>
+            <view class="Distribution_btn" style="background-color: #0EBC6C;">已派单</view>
+        </view>
+    </view>
+</view>
