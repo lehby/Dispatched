@@ -17,7 +17,7 @@
             <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
         </view>
         <view class="NewSingle_bottom">
-            <view style="background-color: #2269d4;">派单</view>
+            <view style="background-color: #2269d4;" catchtap="onDistribution" >派单</view>
         </view>
     </view>
     <!-- 已派单 -->
@@ -44,7 +44,7 @@
             <view style="margin-top: 10rpx;">地址: {{item.Address}}</view>
         </view>
         <view class="NewSingle_bottom">
-            <view style="background-color: #2269d4;">派单</view>
+            <view style="background-color: #2269d4;" catchtap="onDistribution" >派单</view>
         </view>
     </view>
 </view>

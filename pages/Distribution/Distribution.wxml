@@ -8,7 +8,7 @@
         {{item}}
     </text>
 </view>
-<!-- 全部订单 -->
+<!-- 全部配送工 -->
 <view hidden="{{currentTab!==0}}">
      <!-- 休息 -->
     <view class="Distributionlist">

@@ -19,12 +19,12 @@ Page({
       //   GroupName: "某某组"
       // },
     ],
-    PaymentItems: [//支付方式选择
-      { name: '配送工1', vehicle: '三轮', checked: true },
-      { name: '配送工2', vehicle: '三轮', checked: false },
-      { name: '配送工3', vehicle: '三轮', checked: false },
-      { name: '配送工4', vehicle: '三轮', checked: false },
-    ],
+    // PaymentItems: [//支付方式选择
+    //   { name: '配送工1', vehicle: '三轮', checked: true },
+    //   { name: '配送工2', vehicle: '三轮', checked: false },
+    //   { name: '配送工3', vehicle: '三轮', checked: false },
+    //   { name: '配送工4', vehicle: '三轮', checked: false },
+    // ],
     NewSingle: [//新单
       {
         CustomeId: '348867486123',
@@ -98,11 +98,16 @@ Page({
       },
     ]
   },
+  //配送工分配页面跳转
+  onDistribution(){
+    wx.navigateTo({
+      url: '/pages/Distribution/Distribution',
+    })
+  },
   // 获取ipt分组名称值
   voteTitle(e) {
     let value = e.detail.value
     if (value !== "") {
-      console.log(value)
       this.setData({
         GroupName: value
       })
@@ -152,37 +157,37 @@ Page({
   allotConfirm: function () {
     this.allotModal();
   },
-  //分组点击事件
-  allot() {
-    this.setData({
-      allotModal: true,
-    })
-    if (this.data.CreateGroup[0] === undefined) {
-      this.setData({
-        Grouping: 1
-      })
-    } else {
-      this.setData({
-        Grouping: 2
-      })
-    }
-  },
+  // //分组点击事件
+  // allot() {
+  //   this.setData({
+  //     allotModal: true,
+  //   })
+  //   if (this.data.CreateGroup[0] === undefined) {
+  //     this.setData({
+  //       Grouping: 1
+  //     })
+  //   } else {
+  //     this.setData({
+  //       Grouping: 2
+  //     })
+  //   }
+  // },
 
 
-  //配送工选项框点击事件
-  PaymentChange: function (e) {
-    var checked = e.detail.value
-    var changed = {}
-    for (var i = 0; i < this.data.PaymentItems.length; i++) {
-      if (checked.indexOf(this.data.PaymentItems[i].name) !== -1) {
-        changed['PaymentItems[' + i + '].checked'] = true
-      } else {
-        changed['PaymentItems[' + i + '].checked'] = false
-      }
-    }
-    console.log(changed)
-    this.setData(changed)
-  },
+  // //配送工选项框点击事件
+  // PaymentChange: function (e) {
+  //   var checked = e.detail.value
+  //   var changed = {}
+  //   for (var i = 0; i < this.data.PaymentItems.length; i++) {
+  //     if (checked.indexOf(this.data.PaymentItems[i].name) !== -1) {
+  //       changed['PaymentItems[' + i + '].checked'] = true
+  //     } else {
+  //       changed['PaymentItems[' + i + '].checked'] = false
+  //     }
+  //   }
+  //   console.log(changed)
+  //   this.setData(changed)
+  // },
 
 
   /**

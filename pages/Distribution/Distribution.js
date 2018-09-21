@@ -6,7 +6,7 @@ let amap = require("../../utils/amap");
 let markersData = [];
 Page({
   data: {
-    navbar: ['全部订单', '休息中', '已派单'],
+    navbar: ['全部配送工', '休息中', '已派单'],
     currentTab: 0,
     //地图
     markers: [],

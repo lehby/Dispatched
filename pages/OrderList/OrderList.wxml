@@ -61,7 +61,7 @@
         </view>
     </view>
     <!-- 分单 -->
-    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" bindtap="onDivision">
+    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" >
         <view class="NewSingle_top">
             <view>组名称</view>
             <view style="color: #EFA604;">已{{item.OrderType}}</view>
@@ -73,7 +73,7 @@
             <view class="remove">移除分组</view>
         </view>
         <view class="NewSingle_bottom">
-            <view style="background-color: #EFA604;">派单</view>
+            <view style="background-color: #EFA604;" catchtap="onDistribution">派单</view>
         </view>
     </view>
     <!-- 分单弹框 -->
@@ -164,7 +164,7 @@
 <!-- 分单 -->
 <view hidden="{{currentTab!==2}}">
     <!-- 分单 -->
-    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" bindtap="onDivision">
+    <view class="NewSingle" wx:for="{{Division}}" wx:for-item="item" wx:key="Division" >
         <view class="NewSingle_top">
             <view>组名称</view>
             <view style="color: #EFA604;">已{{item.OrderType}}</view>
@@ -176,7 +176,7 @@
             <view class="remove">移除分组</view>
         </view>
         <view class="NewSingle_bottom">
-            <view style="background-color: #EFA604;">派单</view>
+            <view style="background-color: #EFA604;" catchtap="onDistribution">派单</view>
         </view>
     </view>
     <!-- 分单弹框 -->

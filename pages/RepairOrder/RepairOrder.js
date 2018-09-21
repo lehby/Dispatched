@@ -40,6 +40,12 @@ Page({
       },
     ],
   },
+   //配送工分配页面跳转
+   onDistribution(){
+    wx.navigateTo({
+      url: '/pages/Distribution/Distribution',
+    })
+  },
   //跳转详情
   details(){
     wx.navigateTo({
