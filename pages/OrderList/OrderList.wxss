@@ -181,6 +181,7 @@ page{
     margin-top: 40rpx;
 }
 .Create>input{
+    padding-left:20rpx;
     margin: 0 auto;
     width: 600rpx;
     height: 90rpx;

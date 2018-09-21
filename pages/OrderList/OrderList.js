@@ -7,7 +7,7 @@ Page({
   data: {
     DivisionModal: false,//控制配送工弹框按钮
     allotModal: false,//控制分单弹框按钮
-    navbar: ['全部订单', '新单', '分单', '派单'],
+    navbar: ['全部订单', '新单', '分组', '派单'],
     currentTab: 0,
     //每个状态的显示和隐藏
     Grouping: 0,
@@ -59,7 +59,7 @@ Page({
     ],
     Division: [//分单
       {
-        OrderType: '分单',
+        OrderType: '分组',
         singlelist: [
           {
             CustomeId: '348867486123',
@@ -78,7 +78,7 @@ Page({
         ]
       },
       {
-        OrderType: '分单',
+        OrderType: '分组',
         singlelist: [
           {
             CustomeId: '348867486123',
@@ -100,20 +100,25 @@ Page({
   },
   // 获取ipt分组名称值
   voteTitle(e) {
-    this.setData({
-      GroupName: e.detail.value
-    })
-    let CreateGroup = this.data.CreateGroup;
-    let obj = {};
-    obj.GroupName = this.data.GroupName
-    obj.GroupOrder = "1个订单"
-    CreateGroup.push(obj);
-    this.setData({ CreateGroup })
+    let value = e.detail.value
+    if (value !== "") {
+      console.log(value)
+      this.setData({
+        GroupName: value
+      })
+      let CreateGroup = this.data.CreateGroup;
+      let obj = {};
+      obj.GroupName = this.data.GroupName
+      obj.GroupOrder = "1个订单"
+      CreateGroup.push(obj);
+      this.setData({ CreateGroup })
+    }
   },
   //保存分组点击事件
   onPreservation() {
     this.setData({
-      Grouping: 2
+      Grouping: 2,
+      GroupName: ""
     })
   },
   // 创建分组点击事件
@@ -123,12 +128,12 @@ Page({
     })
   },
   /**
-   * 分单弹出框蒙层截断touchmove事件
+   * 分组弹出框蒙层截断touchmove事件
    */
   preventTouchMove: function () {
   },
   /**
-   * 分单隐藏模态对话框
+   * 分组隐藏模态对话框
    */
   allotModal: function () {
     this.setData({
@@ -136,18 +141,18 @@ Page({
     });
   },
   /**
-   * 分单对话框取消按钮点击事件
+   * 分组对话框取消按钮点击事件
    */
   allotCancel: function () {
     this.allotModal();
   },
   /**
-   * 分单对话框确认按钮点击事件
+   * 分组对话框确认按钮点击事件
    */
   allotConfirm: function () {
     this.allotModal();
   },
-  //分单点击事件
+  //分组点击事件
   allot() {
     this.setData({
       allotModal: true,
@@ -156,7 +161,7 @@ Page({
       this.setData({
         Grouping: 1
       })
-    }else{
+    } else {
       this.setData({
         Grouping: 2
       })
