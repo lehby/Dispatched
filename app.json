@@ -28,12 +28,6 @@
         "text": "维修订单",
         "iconPath": "/imgs/R.png",
         "selectedIconPath": "/imgs/R1.png"
-      },
-      {
-        "pagePath": "pages/Statistics/Statistics",
-        "text": "统计表单",
-        "iconPath": "/imgs/Statistics.png",
-        "selectedIconPath": "/imgs/Statistics1.png"
       }
     ]
   }

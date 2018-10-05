@@ -157,21 +157,21 @@ Page({
   allotConfirm: function () {
     this.allotModal();
   },
-  // //分组点击事件
-  // allot() {
-  //   this.setData({
-  //     allotModal: true,
-  //   })
-  //   if (this.data.CreateGroup[0] === undefined) {
-  //     this.setData({
-  //       Grouping: 1
-  //     })
-  //   } else {
-  //     this.setData({
-  //       Grouping: 2
-  //     })
-  //   }
-  // },
+  //分组点击事件
+  allot() {
+    this.setData({
+      allotModal: true,
+    })
+    if (this.data.CreateGroup[0] === undefined) {
+      this.setData({
+        Grouping: 1
+      })
+    } else {
+      this.setData({
+        Grouping: 2
+      })
+    }
+  },
 
 
   // //配送工选项框点击事件
